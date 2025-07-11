@@ -1,0 +1,740 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Our Services - Elvion{% endblock %}
+
+{% block content %}
+<section class="hero-header">
+    <div class="container text-center">
+        <div class="header-content" data-aos="fade-up">
+            <h1 class="display-4 header-title">Our Services</h1>
+            <p class="lead header-subtitle">Comprehensive digital solutions tailored to elevate your business and drive success.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="section-title" data-aos="fade-up">What We Offer</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">From concept to deployment, we provide end-to-end solutions that transform your ideas into powerful digital experiences. Our expertise spans across multiple domains to ensure your business stays ahead of the competition.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="Full-stack web development process">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-code"></i>
+                        <span>Development</span>
+                    </div>
+                    <h3 class="service-title">Full-Stack Development</h3>
+                    <p class="service-description">Complete web & app development with integrated AI features and automation for modern businesses. We build scalable, secure, and high-performance applications that grow with your business.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Frontend Development (React, Vue, Angular)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Backend Development (Python/Django, Node.js)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Database Design & Optimization</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>API Development & Integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Cloud Deployment & DevOps</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Get Started</a>
+                        <a href="#pricing" class="btn btn-outline-primary">View Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0" data-aos="fade-left">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="E-commerce platform dashboard">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>E-commerce</span>
+                    </div>
+                    <h3 class="service-title">E-commerce Solutions</h3>
+                    <p class="service-description">Professional Shopify & WordPress development for robust online stores and business websites. We create conversion-optimized e-commerce platforms that drive sales and enhance customer experience.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Custom Shopify Store Development</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>WordPress E-commerce (WooCommerce)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Payment Gateway Integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Inventory Management Systems</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Mobile-Responsive Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Launch Your Store</a>
+                        <a href="#pricing" class="btn btn-outline-primary">View Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=1974&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="AI and machine learning visualization">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-robot"></i>
+                        <span>AI & Automation</span>
+                    </div>
+                    <h3 class="service-title">AI Integration & Automation</h3>
+                    <p class="service-description">Leverage the power of Artificial Intelligence to automate tasks, gain insights from data, and enhance user engagement. We specialize in intelligent systems that understand, plan, and act to achieve your business goals.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Custom Chatbot Development</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Natural Language Processing (NLP)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Machine Learning Model Integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Business Process Automation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Data Analytics & Insights</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Explore AI Solutions</a>
+                        <a href="#pricing" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0" data-aos="fade-left">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?q=80&w=2074&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="SEO and content marketing analytics">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-search"></i>
+                        <span>Digital Marketing</span>
+                    </div>
+                    <h3 class="service-title">SEO & Content Marketing</h3>
+                    <p class="service-description">Comprehensive SEO services, blog writing, copywriting, and landing page optimization. We help your business rank higher in search results and convert visitors into customers.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Technical SEO Optimization</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Content Strategy & Blog Writing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Landing Page Optimization</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Keyword Research & Analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Performance Tracking & Reporting</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Boost Your Rankings</a>
+                        <a href="#pricing" class="btn btn-outline-primary">SEO Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="Performance advertising dashboard">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Advertising</span>
+                    </div>
+                    <h3 class="service-title">Performance Advertising</h3>
+                    <p class="service-description">Strategic performance ads across Meta, Google, and YouTube to maximize your ROI. We create data-driven campaigns that deliver measurable results and drive business growth.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Google Ads Campaign Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Facebook & Instagram Advertising</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>YouTube Video Advertising</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Campaign Optimization & A/B Testing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>ROI Tracking & Analytics</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Start Advertising</a>
+                        <a href="#pricing" class="btn btn-outline-primary">View Campaigns</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0" data-aos="fade-left">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=2070&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="Creative content production setup">
+                </div>
+            </div>
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-video"></i>
+                        <span>Creative</span>
+                    </div>
+                    <h3 class="service-title">Creative Content Production</h3>
+                    <p class="service-description">Video editing, 2D/3D animation, and user-generated content creation for engaging experiences. We produce compelling visual content that tells your brand story and captivates your audience.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Professional Video Editing</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>2D & 3D Animation</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Motion Graphics & VFX</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>User-Generated Content Strategy</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Brand Identity & Visual Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Create Content</a>
+                        <a href="#pricing" class="btn btn-outline-primary">View Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="service-image-container">
+                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=2039&auto=format&fit=crop" class="img-fluid rounded shadow-dark" alt="Social media marketing strategy">
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="service-content">
+                    <div class="service-badge">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Social Media</span>
+                    </div>
+                    <h3 class="service-title">Digital Marketing & Social Media</h3>
+                    <p class="service-description">Social media management and email marketing campaigns for effective client acquisition. We build and maintain your online presence across all major platforms to engage your target audience.</p>
+                    
+                    <div class="service-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Social Media Strategy & Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Email Marketing Campaigns</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Content Calendar Planning</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Community Management</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Analytics & Performance Reporting</span>
+                        </div>
+                    </div>
+                    
+                    <div class="service-cta">
+                        <a href="{% url 'contact_us' %}" class="btn btn-primary">Grow Your Audience</a>
+                        <a href="#pricing" class="btn btn-outline-primary">Social Packages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title" data-aos="fade-up">Our Process</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">How we turn your ideas into reality</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="process-card">
+                    <div class="process-number">01</div>
+                    <div class="process-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h5>Discovery</h5>
+                    <p>We start by understanding your business needs, goals, and target audience to create a tailored strategy.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="process-card">
+                    <div class="process-number">02</div>
+                    <div class="process-icon">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h5>Planning</h5>
+                    <p>We develop a comprehensive project plan with clear timelines, milestones, and deliverables.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="process-card">
+                    <div class="process-number">03</div>
+                    <div class="process-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h5>Development</h5>
+                    <p>Our expert team brings your vision to life using the latest technologies and best practices.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                <div class="process-card">
+                    <div class="process-number">04</div>
+                    <div class="process-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h5>Launch</h5>
+                    <p>We deploy your solution and provide ongoing support to ensure optimal performance and growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <h2 class="section-title text-center" data-aos="fade-up">Technology Stack</h2>
+        <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Powered by cutting-edge technologies</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="row text-center">
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="tech-icon">
+                            <i class="fab fa-react" style="font-size: 3rem; color: #61DAFB;"></i>
+                            <p class="mt-2 small">React</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="tech-icon">
+                            <i class="fab fa-node-js" style="font-size: 3rem; color: #339933;"></i>
+                            <p class="mt-2 small">Node.js</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="tech-icon">
+                            <i class="fab fa-python" style="font-size: 3rem; color: #3776AB;"></i>
+                            <p class="mt-2 small">Python</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="350">
+                        <div class="tech-icon">
+                            <i class="fab fa-js-square" style="font-size: 3rem; color: #F7DF1E;"></i>
+                            <p class="mt-2 small">JavaScript</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="tech-icon">
+                            <i class="fab fa-aws" style="font-size: 3rem; color: #FF9900;"></i>
+                            <p class="mt-2 small">AWS</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-4 mb-4" data-aos="zoom-in" data-aos-delay="450">
+                        <div class="tech-icon">
+                            <i class="fab fa-docker" style="font-size: 3rem; color: #2496ED;"></i>
+                            <p class="mt-2 small">Docker</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-primary text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4" data-aos="fade-up">Ready to Transform Your Business?</h2>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Let's discuss your project and create a solution that drives real results for your business.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <a href="{% url 'contact_us' %}" class="btn btn-light btn-lg">Start Your Project</a>
+                    <a href="{% url 'about_us' %}" class="btn btn-outline-light btn-lg">Learn About Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --dark-bg: #0a0a0a;
+        --dark-bg-secondary: #1a1a1a;
+        --dark-bg-tertiary: #2a2a2a;
+        --dark-text: #ffffff;
+        --dark-text-secondary: #b0b0b0;
+        --dark-text-muted: #808080;
+        --dark-border: #333333;
+        --primary-color: #6366f1;
+        --secondary-color: #8b5cf6;
+        --accent-color: #06b6d4;
+    }
+
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .hero-header {
+        background: var(--dark-bg-secondary);
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .header-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .header-title {
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+    }
+
+    .header-subtitle {
+        color: var(--dark-text-secondary);
+        font-size: 1.25rem;
+    }
+
+    .section {
+        background-color: var(--dark-bg);
+        padding: 80px 0;
+    }
+
+    .bg-darker {
+        background-color: var(--dark-bg-secondary) !important;
+    }
+
+    .section-title {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .section-subtitle {
+        color: var(--dark-text-secondary);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .service-image-container {
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    .shadow-dark {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        border: 1px solid var(--dark-border);
+    }
+
+    .service-content {
+        padding: 2rem 0;
+    }
+
+    .service-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-title {
+        color: var(--dark-text);
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+
+    .service-description {
+        color: var(--dark-text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .service-features {
+        margin-bottom: 2rem;
+    }
+
+    .feature-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: var(--dark-bg-tertiary);
+        border-radius: 10px;
+        border: 1px solid var(--dark-border);
+        transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+        background: var(--dark-bg-secondary);
+        border-color: var(--primary-color);
+        transform: translateX(5px);
+    }
+
+    .feature-item i {
+        color: var(--primary-color);
+        font-size: 1.1rem;
+        min-width: 20px;
+    }
+
+    .feature-item span {
+        color: var(--dark-text-secondary);
+        font-weight: 500;
+    }
+
+        .service-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+
+    .btn-outline-primary {
+        background-color: transparent;
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    .process-card {
+        background-color: var(--dark-bg-tertiary);
+        padding: 2rem;
+        border-radius: 12px;
+        border: 1px solid var(--dark-border);
+        transition: all 0.3s ease;
+        text-align: center;
+    }
+
+    .process-card:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-5px);
+    }
+
+    .process-number {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+
+    .process-icon {
+        font-size: 2rem;
+        color: var(--secondary-color);
+        margin-bottom: 1rem;
+    }
+
+    .process-card h5 {
+        color: var(--dark-text);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .process-card p {
+        color: var(--dark-text-muted);
+        font-size: 0.95rem;
+    }
+
+    .tech-icon {
+        background: var(--dark-bg-tertiary);
+        border: 1px solid var(--dark-border);
+        border-radius: 12px;
+        padding: 1.5rem 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .tech-icon:hover {
+        border-color: var(--accent-color);
+        transform: scale(1.05);
+    }
+
+    .tech-icon p {
+        color: var(--dark-text-secondary);
+        margin-top: 0.5rem;
+        font-weight: 500;
+    }
+
+</style>
+{% endblock %}

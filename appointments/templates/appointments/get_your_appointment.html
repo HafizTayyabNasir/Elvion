@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book an Appointment - Elvion{% endblock %}
+
+{% block content %}
+<div class="container section">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="section-title">Select an Appointment Time</h2>
+            
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+
+            {% if available_slots %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="card p-4">
+                    <div class="mb-3">
+                        <label for="service_type" class="form-label">What service are you interested in?</label>
+                        <select class="form-select" id="service_type" name="service_type" required>
+                            <option value="" selected disabled>-- Select a Service --</option>
+                            <option value="Full-Stack Development">Full-Stack Development</option>
+                            <option value="E-commerce Solutions">E-commerce Solutions</option>
+                            <option value="AI & Automation">AI & Automation</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="General Consultation">General Consultation</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Choose an available time slot:</label>
+                        <div class="list-group">
+                            {% for slot in available_slots %}
+                            <label class="list-group-item">
+                                <input class="form-check-input me-1" type="radio" name="time_slot" value="{{ slot.id }}" required>
+                                {{ slot.start_time|date:"l, F j, Y, P" }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Additional Notes (Optional)</label>
+                        <textarea class="form-control" name="notes" id="notes" rows="3" placeholder="Tell us a bit about your project..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-100">Confirm Appointment</button>
+                </div>
+            </form>
+            {% else %}
+            <div class="alert alert-warning text-center">
+                Sorry, there are no available appointments at this time. Please check back later.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

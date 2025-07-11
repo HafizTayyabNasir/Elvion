@@ -1,0 +1,541 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up - Elvion{% endblock %}
+
+{% block content %}
+<section class="section signup-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+                <div class="signup-card" data-aos="fade-up">
+                    <div class="text-center mb-4">
+                        <h2 class="signup-title">Join Elvion</h2>
+                        <p class="signup-subtitle">Create your account and get started</p>
+                    </div>
+                    
+                    <form method="post" class="signup-form">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label class="form-label">Username</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" name="username" class="form-control" placeholder="Enter your username" required>
+                            </div>
+                            {% if form.username.errors %}
+                                <div class="form-error">{{ form.username.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label class="form-label">Email</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+                            </div>
+                            {% if form.email.errors %}
+                                <div class="form-error">{{ form.email.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label class="form-label">First Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge input-icon"></i>
+                                <input type="text" name="first_name" class="form-control" placeholder="Enter your first name" required>
+                            </div>
+                            {% if form.first_name.errors %}
+                                <div class="form-error">{{ form.first_name.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label class="form-label">Last Name</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-id-badge input-icon"></i>
+                                <input type="text" name="last_name" class="form-control" placeholder="Enter your last name" required>
+                            </div>
+                            {% if form.last_name.errors %}
+                                <div class="form-error">{{ form.last_name.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mb-3">
+                            <label class="form-label">Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" name="password1" class="form-control" placeholder="Enter your password" required>
+                            </div>
+                            {% if form.password1.errors %}
+                                <div class="form-error">{{ form.password1.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mb-4">
+                            <label class="form-label">Confirm Password</label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-lock input-icon"></i>
+                                <input type="password" name="password2" class="form-control" placeholder="Confirm your password" required>
+                            </div>
+                            {% if form.password2.errors %}
+                                <div class="form-error">{{ form.password2.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="terms" name="terms" required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            <i class="fas fa-user-plus me-2"></i>
+                            Create Account
+                        </button>
+                        
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-danger">
+                                {{ form.non_field_errors.0 }}
+                            </div>
+                        {% endif %}
+                    </form>
+                    
+                    <div class="text-center mt-4">
+                        <p class="login-text">
+                            Already have an account?
+                            <a href="{% url 'login' %}" class="login-link">Login Here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="section-title" data-aos="fade-up">Need Help?</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Our support team is here to assist you</p>
+                <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mb-3">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                                <h5>Email Support</h5>
+                                <p><a href="mailto:support@elvion.com" class="text-decoration-none text-primary">support@elvion.com</a></p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="contact-item">
+                                <i class="fas fa-phone fa-2x text-primary mb-3"></i>
+                                <h5>Call Support</h5>
+                                <p><a href="tel:+1234567890" class="text-decoration-none text-primary">+92 333 1****43</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --dark-bg: #0a0a0a;
+        --dark-bg-secondary: #1a1a1a;
+        --dark-bg-tertiary: #2a2a2a;
+        --dark-text: #ffffff;
+        --dark-text-secondary: #b0b0b0;
+        --dark-text-muted: #808080;
+        --dark-border: #333333;
+        --primary-color: #6366f1;
+        --secondary-color: #8b5cf6;
+        --accent-color: #06b6d4;
+    }
+
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .signup-section {
+        background: linear-gradient(135deg, var(--dark-bg) 0%, var(--dark-bg-secondary) 100%);
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .signup-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .signup-card {
+        background: var(--dark-bg-tertiary);
+        border: 1px solid var(--dark-border);
+        border-radius: 20px;
+        padding: 2rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .signup-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .signup-card:hover::before {
+        opacity: 1;
+    }
+
+    .signup-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-color);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .signup-title {
+        font-size: 4rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .signup-subtitle {
+        font-size: 1.25rem;
+        color: var(--dark-text-secondary);
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+    }
+
+    .form-label {
+        color: var(--dark-text);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    .input-wrapper {
+        position: relative;
+        margin-bottom: 0.5rem;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--dark-text-muted);
+        font-size: 1.1rem;
+        z-index: 1;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="password"],
+    .form-control {
+        width: 100%;
+        padding: 15px 15px 15px 50px;
+        background: var(--dark-bg-secondary);
+        border: 2px solid var(--dark-border);
+        border-radius: 15px;
+        color: var(--dark-text);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+    }
+
+    .signup-form input[type="text"]:focus,
+    .signup-form input[type="email"]:focus,
+    .signup-form input[type="password"]:focus,
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        background: var(--dark-bg);
+    }
+
+    .signup-form input[type="text"]:focus ~ .input-icon,
+    .signup-form input[type="email"]:focus ~ .input-icon,
+    .signup-form input[type="password"]:focus ~ .input-icon,
+    .form-control:focus ~ .input-icon {
+        color: var(--primary-color);
+    }
+
+    .signup-form input::placeholder,
+    .form-control::placeholder {
+        color: var(--dark-text-muted);
+        opacity: 0.7;
+    }
+
+    .form-check {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .form-check-input {
+        background-color: var(--dark-bg-secondary);
+        border: 2px solid var(--dark-border);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        cursor: pointer;
+        position: relative;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .form-check-input:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .form-check-input:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        outline: none;
+    }
+
+    .form-check-input:hover {
+        border-color: var(--primary-color);
+    }
+
+    .form-check-label {
+        color: var(--dark-text-secondary);
+        font-size: 0.9rem;
+        cursor: pointer;
+        line-height: 1.4;
+        flex: 1;
+    }
+
+    .terms-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .terms-link:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .login-text {
+        color: var(--dark-text-secondary);
+        margin-bottom: 0;
+    }
+
+    .login-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .login-link:hover {
+        color: var(--secondary-color);
+        text-decoration: underline;
+    }
+
+    .form-error {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    .alert-danger {
+        background-color: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .section {
+        background-color: var(--dark-bg);
+    }
+
+    .bg-darker {
+        background-color: var(--dark-bg-secondary) !important;
+    }
+
+    .section-title {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .section-subtitle {
+        color: var(--dark-text-secondary);
+        margin-bottom: 3rem;
+    }
+
+    .service-card {
+        background: var(--dark-bg-tertiary);
+        border: 1px solid var(--dark-border);
+        border-radius: 20px;
+        padding: 2rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover::before {
+        opacity: 1;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-color);
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .service-card h5,
+    .service-card h6 {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card p {
+        color: var(--dark-text-secondary);
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .service-card:hover .service-icon {
+        transform: scale(1.1);
+        color: var(--accent-color);
+    }
+
+    .contact-item {
+        padding: 1.5rem;
+        border-radius: 15px;
+        background: var(--dark-bg-tertiary);
+        border: 1px solid var(--dark-border);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .contact-item h5 {
+        color: var(--dark-text);
+    }
+    
+    .contact-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        border-color: var(--primary-color);
+    }
+
+    .text-primary {
+        color: var(--primary-color) !important;
+    }
+
+    .text-muted-dark {
+        color: var(--dark-text-muted) !important;
+    }
+
+    @media (max-width: 768px) {
+        .signup-title {
+            font-size: 2.5rem;
+        }
+        
+        .signup-subtitle {
+            font-size: 1.1rem;
+        }
+        
+        .signup-card {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}

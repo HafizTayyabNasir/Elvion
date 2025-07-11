@@ -1,0 +1,580 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Us - Elvion{% endblock %}
+
+{% block content %}
+<section class="hero-header">
+    <div class="container text-center">
+        <div class="header-content" data-aos="fade-up">
+            <h1 class="display-4 header-title">Get In Touch</h1>
+            <p class="lead header-subtitle">We'd love to hear from you. Let's build something amazing together.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mb-5 mb-lg-0" data-aos="fade-right">
+                <div class="contact-form-container">
+                    <h3 class="form-title">Send Us a Message</h3>
+                    <p class="form-subtitle">Tell us about your project and we'll get back to you within 24 hours.</p>
+                    
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert" data-aos="fade-in">
+                                <i class="fas fa-check-circle me-2"></i>
+                                {{ message }}
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    <form method="post" action="{% url 'contact_us' %}" class="contact-form">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control form-control-dark" id="fullName" name="fullName" placeholder="Muhammad Bilal" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control form-control-dark" id="email" name="email" placeholder="you@example.com" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control form-control-dark" id="subject" name="subject" placeholder="Project Inquiry" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control form-control-dark" id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-paper-plane me-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-5" data-aos="fade-left">
+                <div class="contact-info-container">
+                    <h3 class="info-title">Contact Information</h3>
+                    <p class="info-subtitle">Ready to start your project? Reach out to us through any of these channels.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Address</h5>
+                            <p>123 Innovation Drive<br>Tech City, 54321</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Email</h5>
+                            <p><a href="mailto:hello@elvion.com" class="contact-link">hello@elvion.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Phone</h5>
+                            <p><a href="tel:+1234567890" class="contact-link">+1 (234) 567-890</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h5>Business Hours</h5>
+                            <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-darker">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h3 class="section-title text-center" data-aos="fade-up">Find Us</h3>
+                <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Located in the heart of Tech City</p>
+                <div class="map-container" data-aos="fade-up" data-aos-delay="200">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13606.78626451621!2d74.28554890836774!3d31.4511418!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190143e0e99feb%3A0xf39379efff4dd86!2sUniversity%20of%20Management%20%26%20Technology!5e0!3m2!1sen!2s!4v1720155090415!5m2!1sen!2s"
+                        width="100%"
+                        height="400"
+                        style="border:0; border-radius: 15px;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <h3 class="section-title text-center" data-aos="fade-up">Frequently Asked Questions</h3>
+        <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">Quick answers to common questions</p>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion accordion-dark" id="faqAccordion">
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                How long does a typical project take?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Project timelines vary based on complexity and scope. Simple websites typically take 2-4 weeks, while complex applications can take 8-16 weeks. We'll provide a detailed timeline during our initial consultation.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                What's included in your development services?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our services include full-stack development, UI/UX design, database design, API integration, testing, deployment, and ongoing maintenance. We also provide documentation and training for your team.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                Do you offer ongoing support?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! We provide 24/7 support and maintenance packages. This includes bug fixes, security updates, performance optimization, and feature enhancements to keep your application running smoothly.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section bg-primary text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="mb-4" data-aos="fade-up">Ready to Start Your Project?</h2>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Let's discuss your ideas and create something extraordinary together.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap" data-aos="fade-up" data-aos-delay="200">
+                    <a href="{% url 'services' %}" class="btn btn-light btn-lg">View Our Services</a>
+                    <a href="{% url 'about_us' %}" class="btn btn-outline-light btn-lg">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --dark-bg: #0a0a0a;
+        --dark-bg-secondary: #1a1a1a;
+        --dark-bg-tertiary: #2a2a2a;
+        --dark-text: #ffffff;
+        --dark-text-secondary: #b0b0b0;
+        --dark-text-muted: #808080;
+        --dark-border: #333333;
+        --primary-color: #6366f1;
+        --secondary-color: #8b5cf6;
+        --accent-color: #06b6d4;
+        --success-color: #10b981;
+    }
+
+    body {
+        background-color: var(--dark-bg);
+        color: var(--dark-text);
+    }
+
+    .hero-header {
+        background: var(--dark-bg-secondary);
+        padding: 100px 0 80px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+            radial-gradient(circle at 25% 25%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .header-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .header-title {
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+    }
+
+    .header-subtitle {
+        color: var(--dark-text-secondary);
+        font-size: 1.25rem;
+    }
+
+    .section {
+        background-color: var(--dark-bg);
+        padding: 80px 0;
+    }
+
+    .bg-darker {
+        background-color: var(--dark-bg-secondary) !important;
+    }
+
+    .section-title {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .section-subtitle {
+        color: var(--dark-text-secondary);
+        margin-bottom: 3rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-form-container {
+        background: var(--dark-bg-secondary);
+        border: 1px solid var(--dark-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-title {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .form-subtitle {
+        color: var(--dark-text-secondary);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    .form-label {
+        color: var(--dark-text);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-control-dark {
+        background-color: var(--dark-bg-tertiary);
+        border: 1px solid var(--dark-border);
+        color: var(--dark-text);
+        border-radius: 10px;
+        padding: 12px 16px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control-dark:focus {
+        background-color: var(--dark-bg-tertiary);
+        border-color: var(--primary-color);
+        color: var(--dark-text);
+        box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+    }
+
+    .form-control-dark::placeholder {
+        color: var(--dark-text-muted);
+    }
+
+    .contact-info-container {
+        background: var(--dark-bg-secondary);
+        border: 1px solid var(--dark-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        height: fit-content;
+    }
+
+    .info-title {
+        color: var(--dark-text);
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .info-subtitle {
+        color: var(--dark-text-secondary);
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: var(--dark-bg-tertiary);
+        border-radius: 15px;
+        border: 1px solid var(--dark-border);
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-color);
+        box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+    }
+
+    .contact-icon {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        min-width: 40px;
+        text-align: center;
+        padding: 0.5rem;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    .contact-item:hover .contact-icon {
+        color: var(--accent-color);
+        background: rgba(6, 182, 212, 0.1);
+    }
+
+    .contact-details h5 {
+        color: var(--dark-text);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .contact-details p {
+        color: var(--dark-text-secondary);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .contact-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .contact-link:hover {
+        color: var(--accent-color);
+    }
+
+    .map-container {
+        background: var(--dark-bg-secondary);
+        border: 1px solid var(--dark-border);
+        border-radius: 20px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .accordion-dark .accordion-item {
+        background: var(--dark-bg-secondary);
+        border: 1px solid var(--dark-border);
+        border-radius: 15px;
+        margin-bottom: 1rem;
+        overflow: hidden;
+    }
+
+    .accordion-dark .accordion-button {
+        background: var(--dark-bg-tertiary);
+        color: var(--dark-text);
+        border: none;
+        padding: 1.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .accordion-dark .accordion-button:not(.collapsed) {
+        background: var(--primary-color);
+        color: white;
+        box-shadow: none;
+    }
+
+    .accordion-dark .accordion-button:focus {
+        box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+    }
+
+    .accordion-dark .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+
+    .accordion-dark .accordion-body {
+        background: var(--dark-bg-secondary);
+        color: var(--dark-text-secondary);
+        padding: 1.5rem;
+        border-top: 1px solid var(--dark-border);
+    }
+
+    .alert-success {
+        background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success-color);
+        border-radius: 10px;
+    }
+
+    .btn-close-white {
+        filter: invert(1);
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+        color: white;
+    }
+
+    .btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        color: var(--primary-color);
+        background: transparent;
+        padding: 10px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+        background: var(--primary-color);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .bg-primary {
+        background: var(--dark-bg-secondary) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bg-primary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 40%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 70% 60%, rgba(139, 92, 246, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .bg-primary .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    .btn-light {
+        background: white;
+        color: var(--primary-color);
+        border: none;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-light:hover {
+        background: var(--dark-text-secondary);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline-light {
+        border: 2px solid white;
+        color: white;
+        background: transparent;
+        padding: 10px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-light:hover {
+        background: white;
+        color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+
+    .text-primary {
+        color: var(--primary-color) !important;
+    }
+
+    @media (max-width: 768px) {
+        .hero-header {
+            padding: 60px 0 40px;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .contact-form-container,
+        .contact-info-container {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            align-self: center;
+        }
+    }
+</style>
+{% endblock %}
