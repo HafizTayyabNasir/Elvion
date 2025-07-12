@@ -9,19 +9,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # ==============================================================================
-# PRODUCTION / VERCEL SETTINGS
+# CORE PRODUCTION SETTINGS FOR VERCEL
 # ==============================================================================
 
 # SECRET_KEY is now read from an environment variable for security.
 # You will set this in the Vercel dashboard.
-SECRET_KEY = os.environ.get('SECRET_KEY', 'a-default-secret-key-for-local-development')
+# The second argument is a fallback key for local development.
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y-nh96c1ncur+fkquj#howq067m81+c(p4o4)%znhj1&86$d7r')
 
 # DEBUG is False in production for security, but True for local development.
 # Vercel sets the 'VERCEL_ENV' variable to 'production' automatically.
 DEBUG = os.environ.get('VERCEL_ENV') != 'production'
 
-# Add your Vercel deployment URL to ALLOWED_HOSTS.
-# The '.vercel.app' entry allows any subdomain, which is convenient.
+# Add your Vercel project URL to ALLOWED_HOSTS.
+# The '.vercel.app' entry allows any subdomain of vercel.app, which is convenient.
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
 # ==============================================================================
@@ -42,9 +43,10 @@ INSTALLED_APPS = [
 ]
 
 # ==============================================================================
-# MIDDLEWARE Configuration
+# MIDDLEWARE Configuration for Vercel
 # ==============================================================================
 # whitenoise middleware is added to serve static files in production.
+# It must be placed right after the SecurityMiddleware.
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware", # ADD THIS LINE
@@ -82,7 +84,124 @@ WSGI_APPLICATION = "elvion_project.wsgi.application"
 # ==============================================================================
 # This default SQLite configuration is fine for Vercel deployment,
 # but note that the database will be temporary and reset on new deployments.
-# For a persistent database, you would configure Vercel Postgres here.
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}
+
+
+# ==============================================================================
+# Password validation
+# ==============================================================================
+AUTH_PASSWORD_VALIDATORS = [
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+]
+
+
+# ==============================================================================
+# Internationalization
+# =================================================I am so sorry for the frustrating journey. I understand you want a single, complete `settings.py` file with all the necessary changes for Vercel deployment, based on the last version you provided. You are right to ask for a clean, final version.
+
+Here it is. This code includes all the necessary configurations we've discussed: reading secrets from the environment, setting `DEBUG` status automatically, and configuring `whitenoise` for static files.
+
+**Action:** Please **replace the entire contents** of your `elvion_project/settings.py` file with the code block below.
+
+---
+
+### Final and Complete `settings.py` for Vercel Deployment
+
+```python
+"""
+Django settings for elvion_project project.
+"""
+import os
+from pathlib import Path
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+# ==============================================================================
+# CORE PRODUCTION SETTINGS FOR VERCEL
+# ==============================================================================
+
+# SECRET_KEY is now read from an environment variable for security.
+# You will set this in the Vercel dashboard.
+# The second argument is a fallback key for local development.
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y-nh96c1ncur+fkquj#howq067m81+c(p4o4)%znhj1&86$d7r')
+
+# DEBUG is False in production for security, but True for local development.
+# Vercel sets the 'VERCEL_ENV' variable to 'production' automatically.
+DEBUG = os.environ.get('VERCEL_ENV') != 'production'
+
+# Add your Vercel project URL to ALLOWED_HOSTS.
+# The '.vercel.app' entry allows any subdomain of vercel.app, which is convenient.
+ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+
+# ==============================================================================
+# Application definition
+# ==============================================================================
+
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    # Your apps
+    'website.apps.WebsiteConfig',
+    'chatbot.apps.ChatbotConfig',
+    'appointments.apps.AppointmentsConfig'
+]
+
+# ==============================================================================
+# MIDDLEWARE Configuration for Vercel
+# ==============================================================================
+# whitenoise middleware is added to serve static files in production.
+# It must be placed right after the SecurityMiddleware.
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", # This line is added for Vercel
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+ROOT_URLCONF = "elvion_project.urls"
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+
+WSGI_APPLICATION = "elvion_project.wsgi.application"
+
+
+# ==============================================================================
+# Database
+# ==============================================================================
+# This default SQLite configuration is fine for Vercel deployment,
+# but note that the database will be temporary and reset on new deployments.
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -112,7 +231,7 @@ USE_TZ = True
 
 
 # ==============================================================================
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images) for Vercel
 # ==============================================================================
 STATIC_URL = 'static/'
 # This tells Django where to find your static files in development.
