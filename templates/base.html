@@ -43,7 +43,7 @@
         }
 
         .navbar {
-            background: rgba(26, 26, 26, 0.95); /* <-- FIX: !important REMOVED */
+            background: rgba(26, 26, 26, 0.95); /* Fix 1: !important removed */
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--dark-border);
             transition: all 0.3s ease;
@@ -343,6 +343,18 @@
                 margin: 0.25rem 0;
             }
         }
+        
+        /* FIX 2: Style the collapsed navbar menu on mobile */
+        @media (max-width: 991.98px) {
+            .navbar .navbar-collapse {
+                margin-top: 0.5rem;
+                background: var(--dark-bg-secondary);
+                padding: 1.5rem;
+                border-radius: 15px;
+                border: 1px solid var(--dark-border);
+                box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            }
+        }
 
         .loading-spinner {
             display: none;
@@ -578,7 +590,7 @@
                 navbar.style.background = 'rgba(26, 26, 26, 0.98)';
                 navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
             } else {
-                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
+                navbar.style.background = 'rgba(26, 26, 26, _0.95)';
                 navbar.style.boxShadow = 'none';
             }
         });
