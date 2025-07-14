@@ -9,13 +9,8 @@ echo "--- Building Elvion Project ---"
 echo "--- Installing dependencies ---"
 pip install -r requirements.txt
 
-# --- Build ---
-# Collect static files first
+# --- Collect Static Files ONLY ---
 echo "--- Collecting static files ---"
 python manage.py collectstatic --noinput --clear
-
-# Run database migrations using the POSTGRES_URL from Vercel's environment
-echo "--- Applying database migrations to production database ---"
-python manage.py migrate --database=default
 
 echo "--- Build Complete ---"
