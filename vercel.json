@@ -19,11 +19,5 @@
       "src": "/(.*)",
       "dest": "elvion_project/wsgi.py"
     }
-  ],
-  "env": {
-    "DATABASE_URL": "@postgres_url",
-    "POSTGRES_URL": "@postgres_url",
-    "SECRET_KEY": "@secret_key",
-    "GEMINI_API_KEY": "@gemini_api_key"
-  }
+  ]
 }
