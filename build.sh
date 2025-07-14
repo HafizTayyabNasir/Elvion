@@ -13,7 +13,11 @@ python manage.py migrate
 echo "--- Creating superuser (if it does not exist) ---"
 python manage.py create_superuser_on_deploy
 
+# ==========================================================
+# THE CORRECTED LINE
+# ==========================================================
 echo "--- Setting/Resetting admin password ---"
-python manage.g set_admin_password
+python manage.py set_admin_password
+# ==========================================================
 
 echo "--- Build Complete ---"
