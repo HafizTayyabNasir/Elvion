@@ -1,15 +1,11 @@
 #!/bin/bash
+...
+# 2. Apply Database Migrations
+echo "--- Applying database migrations ---"
+python manage.py migrate
 
-# Exit immediately if a command exits with a non-zero status.
-set -o errexit
-
-echo "--- Building Elvion Project ---"
-
-# --- Installation ---
-echo "--- Installing dependencies ---"
-pip install -r requirements.txt
-
-# --- Collect Static Files ONLY ---
+# 3. Collect Static Files
+# THIS IS THE COMMAND THAT FIXES THE ADMIN PANEL'S CSS
 echo "--- Collecting static files ---"
 python manage.py collectstatic --noinput --clear
 
