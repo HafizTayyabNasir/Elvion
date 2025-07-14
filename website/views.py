@@ -1,9 +1,13 @@
-from .models import ContactMessage
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
+from .models import ContactMessage
+import os
+from django.http import HttpResponse
+from django.contrib.auth import get_user_model
 
+# Page Views
 def home_view(request):
     return render(request, 'website/home.html')
 
@@ -13,26 +17,26 @@ def about_us_view(request):
 def services_view(request):
     return render(request, 'website/services.html')
 
+def get_appointment_page_view(request):
+    return render(request, 'website/get_your_appointment.html')
+    
 def contact_us_view(request):
     if request.method == 'POST':
         full_name = request.POST.get('fullName')
         email = request.POST.get('email')
         subject = request.POST.get('subject')
         message_text = request.POST.get('message')
-
         ContactMessage.objects.create(
             full_name=full_name,
             email=email,
             subject=subject,
             message=message_text
         )
-        
         messages.success(request, "Thank you for your message! We will get back to you shortly.")
-        
         return redirect('contact_us')
-    
     return render(request, 'website/contact_us.html')
 
+# Authentication Views
 def signup_view(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -53,6 +57,10 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                # Redirect to the 'next' page if it exists, otherwise to home
+                next_page = request.GET.get('next')
+                if next_page:
+                    return redirect(next_page)
                 return redirect('home')
             else:
                 messages.error(request, "Invalid username or password.")
@@ -65,5 +73,22 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-def get_appointment_page_view(request):
-    return render(request, 'website/get_your_appointment.html')
+# Secret Superuser Creation View
+def create_superuser_view(request):
+    User = get_user_model()
+    username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
+    email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
+    password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
+
+    if not all([username, email, password]):
+        return HttpResponse("<h1>Error</h1><p>Superuser environment variables are not set on Vercel.</p>", status=500)
+
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username=username, email=email, password=password)
+        return HttpResponse(f"<h1>Success!</h1><p>Admin user '{username}' has been created.</p><p>You can now log in at the <a href='/admin/'>admin panel</a>.</p>")
+    else:
+        # If user exists, just reset the password to be sure
+        user = User.objects.get(username=username)
+        user.set_password(password)
+        user.save()
+        return HttpResponse(f"<h1>Already Exists</h1><p>Admin user '{username}' already exists. Its password has been reset.</p><p>You can now log in at the <a href='/admin/'>admin panel</a>.</p>")

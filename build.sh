@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# This script will be automatically run by the @vercel/python builder
+# Exit immediately if a command fails.
+set -e
 
-# Exit on error
-set -o errexit
-
-# Install dependencies
+echo "--- INSTALLING DEPENDENCIES ---"
 pip install -r requirements.txt
 
-# Run database migrations
-python manage.py migrate
-
-# Run our superuser creation script
-python manage.py create_superuser_on_deploy
-
-# Collect static files
+echo "--- COLLECTING STATIC FILES ---"
 python manage.py collectstatic --noinput --clear
+
+echo "--- APPLYING DATABASE MIGRATIONS ---"
+python manage.py migrate
