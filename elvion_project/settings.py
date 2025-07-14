@@ -1,24 +1,20 @@
-"""
-Django settings for elvion_project project.
-"""
 import os
 from pathlib import Path
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# --- CORE PRODUCTION SETTINGS ---
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('VERCEL_ENV') != 'production'
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
-# --- Application definition ---
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic", # For static files
     "django.contrib.staticfiles",
     'website.apps.WebsiteConfig',
     'chatbot.apps.ChatbotConfig',
@@ -27,7 +23,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", # For static files
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -56,13 +52,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "elvion_project.wsgi.application"
 
-# ==============================================================================
-# FINAL DATABASE CONFIGURATION - FORCES POSTGRES
-# ==============================================================================
 DATABASES = {
     'default': dj_database_url.config(
-        # This will use the DATABASE_URL environment variable provided by Vercel.
-        # It's the standard for Vercel Postgres.
+        default=os.environ.get('POSTGRES_URL'),
         conn_max_age=600,
         ssl_require=True
     )
@@ -74,28 +66,17 @@ if not DATABASES['default']:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-# ==============================================================================
 
-AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
-]
-
+AUTH_PASSWORD_VALIDATORS = [{"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",}, {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",}, {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",}, {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},]
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
-
-# --- Static files ---
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'

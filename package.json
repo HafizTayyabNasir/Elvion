@@ -1,5 +1,5 @@
 {
   "scripts": {
-    "build": "pip install -r requirements.txt && python manage.py collectstatic --noinput --clear"
+    "vercel-build": "pip install -r requirements.txt && python manage.py migrate && python manage.py create_superuser_on_deploy"
   }
 }
