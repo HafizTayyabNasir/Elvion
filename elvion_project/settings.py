@@ -61,12 +61,19 @@ WSGI_APPLICATION = "elvion_project.wsgi.application"
 # ==============================================================================
 DATABASES = {
     'default': dj_database_url.config(
-        # Get the URL from the environment variable provided by Vercel
-        default=os.environ.get('POSTGRES_URL'),
+        # This will use the DATABASE_URL environment variable provided by Vercel.
+        # It's the standard for Vercel Postgres.
         conn_max_age=600,
         ssl_require=True
     )
 }
+
+# Add this fallback for local development if DATABASE_URL is not set
+if not DATABASES['default']:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 # ==============================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
