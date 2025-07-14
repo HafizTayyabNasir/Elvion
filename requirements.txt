@@ -3,6 +3,5 @@ gunicorn
 whitenoise
 python-dotenv
 google-generativeai
-nest-asyncio
 dj-database-url
 psycopg2-binary
