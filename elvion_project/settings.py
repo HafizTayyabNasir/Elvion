@@ -83,8 +83,7 @@ if 'POSTGRES_URL' in os.environ:
         'default': dj_database_url.config(
             conn_max_age=600,
             conn_health_checks=True,
-            # Use the pooled URL for better performance with serverless
-            default=os.environ.get('POSTGRES_URL') 
+            ssl_require=True, # <--- THIS IS THE CRITICAL FIX
         )
     }
 else:
@@ -95,6 +94,7 @@ else:
             "NAME": BASE_DIR / "db.sqlite3",
         }
     }
+
 
 
 # ==============================================================================
