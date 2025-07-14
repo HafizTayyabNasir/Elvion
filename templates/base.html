@@ -43,10 +43,11 @@
         }
 
         .navbar {
-            background: rgba(26, 26, 26, 0.95); /* Fix 1: !important removed */
+            background: rgba(26, 26, 26, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--dark-border);
             transition: all 0.3s ease;
+            z-index: 1030; /* Fix: Added z-index to ensure navbar appears above other content */
         }
 
         .navbar-brand {
@@ -89,6 +90,9 @@
         .navbar-toggler {
             border: none;
             color: var(--dark-text);
+            padding: 0.25rem 0.5rem; /* Fix: Ensure proper padding for visibility */
+            z-index: 1031; /* Fix: Higher z-index for the toggle button */
+            position: relative; /* Fix: Ensure proper positioning */
         }
 
         .navbar-toggler:focus {
@@ -97,6 +101,8 @@
 
         .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            width: 1.5em; /* Fix: Explicit width */
+            height: 1.5em; /* Fix: Explicit height */
         }
 
         .navbar-text {
@@ -344,7 +350,7 @@
             }
         }
         
-        /* FIX 2: Style the collapsed navbar menu on mobile */
+        /* Fix: Enhanced mobile navbar styling with better z-index management */
         @media (max-width: 991.98px) {
             .navbar .navbar-collapse {
                 margin-top: 0.5rem;
@@ -353,6 +359,14 @@
                 border-radius: 15px;
                 border: 1px solid var(--dark-border);
                 box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+                position: relative;
+                z-index: 1029; /* Fix: Ensure dropdown appears correctly */
+            }
+            
+            /* Fix: Ensure navbar container has proper positioning */
+            .navbar .container {
+                position: relative;
+                z-index: 1030;
             }
         }
 
@@ -590,7 +604,7 @@
                 navbar.style.background = 'rgba(26, 26, 26, 0.98)';
                 navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
             } else {
-                navbar.style.background = 'rgba(26, 26, 26, _0.95)';
+                navbar.style.background = 'rgba(26, 26, 26, 0.95)';
                 navbar.style.boxShadow = 'none';
             }
         });

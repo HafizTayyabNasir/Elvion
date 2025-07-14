@@ -1,10 +1,10 @@
 """
 Django settings for elvion_project project.
 """
-
-import dj_database_url
 import os
 from pathlib import Path
+# Import the new library for database URLs
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,18 +14,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # CORE PRODUCTION SETTINGS FOR VERCEL
 # ==============================================================================
 
-# SECRET_KEY is now read from an environment variable for security.
-# You will set this in the Vercel dashboard.
-# The second argument is a fallback key for local development.
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-y-nh96c1ncur+fkquj#howq067m81+c(p4o4)%znhj1&86$d7r')
-
-# DEBUG is False in production for security, but True for local development.
-# Vercel sets the 'VERCEL_ENV' variable to 'production' automatically.
 DEBUG = os.environ.get('VERCEL_ENV') != 'production'
-
-# Add your Vercel project URL to ALLOWED_HOSTS.
-# The '.vercel.app' entry allows any subdomain of vercel.app, which is convenient.
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
+
 
 # ==============================================================================
 # Application definition
@@ -47,8 +39,6 @@ INSTALLED_APPS = [
 # ==============================================================================
 # MIDDLEWARE Configuration for Vercel
 # ==============================================================================
-# whitenoise middleware is added to serve static files in production.
-# It must be placed right after the SecurityMiddleware.
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -82,32 +72,30 @@ WSGI_APPLICATION = "elvion_project.wsgi.application"
 
 
 # ==============================================================================
-# Database
+# THE FINAL DATABASE CONFIGURATION
 # ==============================================================================
-# This default SQLite configuration is fine for Vercel deployment,
-# but note that the database will be temporary and reset on new deployments.
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# This logic checks if a POSTGRES_URL is available (on Vercel).
+# If it is, it uses the Postgres database.
+# If not (on your local machine), it falls back to using your local db.sqlite3 file.
+# ==============================================================================
+if 'POSTGRES_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(
+            conn_max_age=600,
+            conn_health_checks=True,
+            # Use the pooled URL for better performance with serverless
+            default=os.environ.get('POSTGRES_URL') 
+        )
     }
-}
+else:
+    # This is the database used for local development
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
-# if 'POSTGRES_URL' in os.environ:
-#     DATABASES = {
-#         'default': dj_database_url.config(
-#             conn_max_age=600,
-#             conn_health_checks=True,
-#         )
-#     }
-# else:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
-#     }
 
 # ==============================================================================
 # Password validation
@@ -133,11 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images) for Vercel
 # ==============================================================================
 STATIC_URL = 'static/'
-# This tells Django where to find your static files in development.
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-# This is where `collectstatic` will put all static files for production.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# This tells whitenoise to handle static file compression and caching.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
