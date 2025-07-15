@@ -1,10 +1,12 @@
+# elvion_project/urls.py
 from django.contrib import admin
 from django.urls import path, include
-from website.views import create_superuser_view 
+# Import the correctly named view
+from website.views import create_superuser_secret_view 
 
 urlpatterns = [
-    # THIS IS THE SECRET URL TO CREATE YOUR ADMIN ACCOUNT
-    path('create-my-admin-now-d7r4k9z/', create_superuser_view, name='create_admin'),
+    # Use the correctly named view
+    path('create-my-admin-now-and-forever-12345/', create_superuser_secret_view, name='create_admin'),
     
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
