@@ -1,5 +1,4 @@
-# website/views.py
-
+from django.core import management
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -79,6 +78,33 @@ def logout_view(request):
 # ==============================================================================
 # We renamed this in the urls.py to 'create_superuser_secret_view' but the original name was 'create_superuser_view'.
 # Let's use the name from urls.py for consistency.
+def setup_production_database(request):
+    try:
+        # Run migrate
+        print("--- Running MIGRATE command ---")
+        management.call_command('migrate', '--noinput')
+        print("--- MIGRATE command finished ---")
+
+        # Create superuser
+        print("--- Running CREATE SUPERUSER command ---")
+        User = get_user_model()
+        username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
+        email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
+        password = os.environ.get('DJANGO_SUPERUSER_PASSWORD')
+
+        if all([username, email, password]):
+            if not User.objects.filter(username=username).exists():
+                User.objects.create_superuser(username=username, email=email, password=password)
+                message = f"<h1>Success!</h1><p>Migrations applied and admin user '{username}' created.</p>"
+            else:
+                message = f"<h1>Success!</h1><p>Migrations applied. Admin user '{username}' already existed.</p>"
+        else:
+            message = "<h1>Warning</h1><p>Migrations applied, but superuser could not be created because environment variables are missing.</p>"
+
+        return HttpResponse(message + "<p>You can now go to the <a href='/admin/'>admin panel</a>.</p>")
+
+    except Exception as e:
+        return HttpResponse(f"<h1>An Error Occurred</h1><pre>{e}</pre>", status=500)
     User = get_user_model()
     username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
     email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
