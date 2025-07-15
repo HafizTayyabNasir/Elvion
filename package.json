@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "vercel-build": "python manage.py migrate && python manage.py create_superuser_on_deploy"
+  }
+}

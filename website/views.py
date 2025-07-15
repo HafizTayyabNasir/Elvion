@@ -79,7 +79,6 @@ def logout_view(request):
 # ==============================================================================
 # We renamed this in the urls.py to 'create_superuser_secret_view' but the original name was 'create_superuser_view'.
 # Let's use the name from urls.py for consistency.
-def create_superuser_secret_view(request):
     User = get_user_model()
     username = os.environ.get('DJANGO_SUPERUSER_USERNAME')
     email = os.environ.get('DJANGO_SUPERUSER_EMAIL')
