@@ -1,21 +1,14 @@
 {
+  "version": 2,
   "builds": [
     {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "staticfiles_build"
-      }
+      "src": "elvion_project/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "runtime": "python3.11" }
     }
   ],
   "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "elvion_project/wsgi.py"
-    }
+    { "src": "/static/(.*)", "dest": "/static/$1" },
+    { "src": "/(.*)", "dest": "elvion_project/wsgi.py" }
   ]
 }

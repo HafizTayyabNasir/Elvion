@@ -109,7 +109,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # THE CRITICAL CHANGE IS HERE: This path must match the 'distDir' in vercel.json
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # This tells whitenoise to handle static file compression and caching.
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
