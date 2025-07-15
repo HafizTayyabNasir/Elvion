@@ -4,10 +4,12 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# --- CORE PRODUCTION SETTINGS ---
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('VERCEL_ENV') != 'production'
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1']
 
+# --- Application definition ---
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -52,8 +54,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "elvion_project.wsgi.application"
 
+# --- THE FINAL DATABASE CONFIGURATION ---
 DATABASES = {
     'default': dj_database_url.config(
+        # This will use the DATABASE_URL environment variable provided by Vercel.
         default=os.environ.get('POSTGRES_URL'),
         conn_max_age=600,
         ssl_require=True
@@ -61,11 +65,12 @@ DATABASES = {
 }
 
 # Add this fallback for local development if DATABASE_URL is not set
-if not DATABASES['default']:
+if 'POSTGRES_URL' not in os.environ:
     DATABASES['default'] = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+
 
 AUTH_PASSWORD_VALIDATORS = [{"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",}, {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",}, {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",}, {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},]
 LANGUAGE_CODE = "en-us"
