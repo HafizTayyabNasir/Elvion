@@ -2,15 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "build.sh",
-      "use": "@vercel/static-build",
+      "src": "elvion_project/wsgi.py",
+      "use": "@vercel/python",
       "config": {
-        "distDir": "staticfiles"
+        "runtime": "python3.11",
+        "maxLambdaSize": "15mb"
       }
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "elvion_project/wsgi.py" }
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "elvion_project/wsgi.py"
+    }
   ]
 }
