@@ -2,9 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "elvion_project/wsgi.py",
-      "use": "@vercel/python",
-      "config": { "runtime": "python3.11" }
+      "src": "build.sh",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "staticfiles"
+      }
     }
   ],
   "routes": [

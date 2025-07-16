@@ -1,13 +1,10 @@
-# elvion_project/urls.py
 from django.contrib import admin
 from django.urls import path, include
-# Add this new import
-from website.views import setup_production_database
+# This is no longer needed
+# from website.views import create_superuser_secret_view 
 
 urlpatterns = [
-    # THIS IS THE SECRET URL
-    path('setup-my-live-database-and-admin-12345/', setup_production_database, name='setup_prod'),
-    
+    # The secret URL is removed. The superuser is now created in the build script.
     path('admin/', admin.site.urls),
     path('', include('website.urls')),
     path('chatbot/', include('chatbot.urls')),
